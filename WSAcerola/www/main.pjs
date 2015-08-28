@@ -1,9 +1,11 @@
 ﻿float TIME = 60;
 int START_ANGLE = 270;
 int starttime;
+PFont font;
 
 void setup() {
   size(300, 300);
+  font = loadFont("sans-serif");
   background(255);
   frameRate(20);
   noFill();
@@ -43,11 +45,11 @@ void draw() {
   }
   // テキスト
   fill(fg);
-  textSize(width / 5);
   textAlign(CENTER, CENTER);
+  textFont(font, width / 5);
   String drawText =
     per > 0 ?
       floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + floor(time % 60) :
       "0:00";
-  text(drawText, wh, hh + width / 20);
+  text(drawText, wh, hh);
 }
