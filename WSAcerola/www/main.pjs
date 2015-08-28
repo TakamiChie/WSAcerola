@@ -16,6 +16,7 @@ void draw() {
   color fg;
   background(255);
   smooth();
+  noFill();
   // 背景
   strokeWeight(width / 20);
   stroke(#02133a);
@@ -40,4 +41,13 @@ void draw() {
     stroke(fg);
     arc(wh, hh, wh, hh, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
   }
+  // テキスト
+  fill(fg);
+  textSize(width / 5);
+  textAlign(CENTER, CENTER);
+  String drawText =
+    per > 0 ?
+      floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + floor(time % 60) :
+      "0:00";
+  text(drawText, wh, hh + width / 20);
 }
