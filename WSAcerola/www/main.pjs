@@ -32,6 +32,8 @@ void draw() {
     fg = #dd9977;
     per = 2 - time / TIME;
   }else{
+    // おわり
+    fg = #ff0000;
     per = 0;
   }
   if(per > 0){
