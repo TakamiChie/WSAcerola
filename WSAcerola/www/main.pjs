@@ -1,0 +1,37 @@
+﻿float TIME = 60;
+int START_ANGLE = 270;
+int starttime;
+
+void setup() {
+  size(300, 300);
+  background(255);
+  frameRate(20);
+  noFill();
+  starttime = millis();
+}
+
+void draw() {
+  float wh = width / 2;
+  float hh = height / 2;
+  background(255);
+  smooth();
+  // 背景
+  strokeWeight(width / 20);
+  stroke(#02133a);
+  ellipse(wh, hh, wh, hh);
+  // 前景
+  float time = (millis() - starttime) / 1000;
+  float per;
+  if(time < TIME){
+    // 1周目
+    stroke(#7799dd);
+    per = 1 - time / TIME;
+  }else if(time < TIME * 2){
+    // 2周目
+    stroke(#dd9977);
+    per = 2 - time / TIME;
+  }else{
+    return;
+  }
+  arc(wh, hh, wh, hh, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
+}
