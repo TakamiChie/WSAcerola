@@ -49,7 +49,7 @@ void draw() {
   // テキスト
   fill(fg);
   textAlign(CENTER, CENTER);
-  textFont(font, width / 5);
+  textFont(font, width / 3);
   String drawText =
     per > 0 ?
       floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + floor(time % 60) :
