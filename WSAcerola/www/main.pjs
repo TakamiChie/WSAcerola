@@ -15,14 +15,17 @@ void setup() {
 void draw() {
   float wh = width / 2;
   float hh = height / 2;
+  int wp = width / 10;
+  int wc = width - wp;
+  int hc = height - wp;
   color fg;
   background(255);
   smooth();
   noFill();
   // 背景
-  strokeWeight(width / 20);
+  strokeWeight(wp);
   stroke(#02133a);
-  ellipse(wh, hh, wh, hh);
+  ellipse(wh, hh, wc, hc);
   // 前景
   float time = (millis() - starttime) / 1000;
   float per;
@@ -41,7 +44,7 @@ void draw() {
   }
   if(per > 0){
     stroke(fg);
-    arc(wh, hh, wh, hh, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
+    arc(wh, hh, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
   }
   // テキスト
   fill(fg);
