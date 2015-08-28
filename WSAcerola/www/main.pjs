@@ -13,6 +13,7 @@ void setup() {
 void draw() {
   float wh = width / 2;
   float hh = height / 2;
+  color fg;
   background(255);
   smooth();
   // 背景
@@ -24,14 +25,17 @@ void draw() {
   float per;
   if(time < TIME){
     // 1周目
-    stroke(#7799dd);
+    fg = #7799dd;
     per = 1 - time / TIME;
   }else if(time < TIME * 2){
     // 2周目
-    stroke(#dd9977);
+    fg = #dd9977;
     per = 2 - time / TIME;
   }else{
-    return;
+    per = 0;
   }
-  arc(wh, hh, wh, hh, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
+  if(per > 0){
+    stroke(fg);
+    arc(wh, hh, wh, hh, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
+  }
 }
