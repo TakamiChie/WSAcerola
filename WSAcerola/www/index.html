@@ -19,6 +19,29 @@
   <div id="container">
     <canvas id="timer" data-processing-sources="main.pjs"></canvas>
   </div>
+
+  <div id="toolbar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom'}">
+    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+            id: 'opPlayPause',
+            label: 'Play',
+            icon: 'play',
+            onclick: Main.operation}"></button>
+    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+            id: 'opReset',
+            label: 'Reset',
+            icon: 'refresh',
+            onclick: Main.operation}"></button>
+    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+            id: 'opSetting',
+            label: 'Setting',
+            icon: 'settings',
+            onclick: Main.operation}"></button>
+  </div>
+
+  <!-- WinJS -->
+  <link rel="stylesheet" href="WinJS/css/ui-light.min.css" />
+  <script src="WinJS/js/base.min.js"></script>
+  <script src="WinJS/js/ui.min.js"></script>
   <!-- Processing.js -->
   <script src="scripts/processing/processing-1.3.6.min.js"></script>
   <!-- Cordova のリファレンス。アプリのビルド時にアプリに追加されます。 -->

@@ -10,6 +10,28 @@
     function onDeviceReady() {
       document.addEventListener('pause', onPause.bind(this), false);
       document.addEventListener('resume', onResume.bind(this), false);
+
+      WinJS.UI.Pages.define('index.html', {
+      });
+
+      WinJS.Namespace.define('Main', {
+        operation: WinJS.UI.eventHandler(function (e) {
+          var command = e.currentTarget;
+          if (command.winControl) {
+            switch (command.winControl.id) {
+              case "opPlayPause":
+                break;
+              case "opReset":
+                break;
+              case "opSettings":
+
+                break;
+            }
+          }
+        }),
+      });
+
+      WinJS.UI.processAll();
     };
 
     function onPause() {
