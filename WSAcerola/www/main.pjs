@@ -113,6 +113,6 @@ void draw() {
   // テキスト
   fill(fg);
   textAlign(CENTER, CENTER);
-  textFont(font, width / 3);
+  textFont(font, width / drawText.length());
   text(drawText, wh, hh);
 }
