@@ -127,7 +127,7 @@ void draw() {
   }else if(time < timertime + exceedtime){
     // 2周目
     fg = #dd9977;
-    per = 1 - time / (timertime + exceedtime);
+    per = 1 - (time - timertime) / exceedtime;
   }
   if(per <= 0){
     state = STATE_STOP;
