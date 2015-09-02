@@ -45,12 +45,12 @@ int getState() {
 }
 
 void setTimerTime(int value) {
-  timertime = value;
+  timertime = int(value);
   reset();
 }
 
 void setExceedTime(int value){
-  exceedtime = value;
+  exceedtime = int(value);
 }
 
 void setCountdown(bool value){
