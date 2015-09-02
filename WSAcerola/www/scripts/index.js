@@ -5,6 +5,14 @@
 
 var iProcessing;
 
+// AppBarの表記（ツールバーアイコンなど）をリフレッシュする
+function refreshAppBar() {
+  // ここに置かないとProcessing.js側から関数が見えないので注意
+  var state = iProcessing.getState();
+  opPlayPause.winControl.icon = state == 1 ? "pause" : "play";
+  opPlayPause.winControl.label = state == 1 ? "Pause" : "Play";
+}
+
 (function () {
     "use strict";
 
@@ -27,6 +35,7 @@ var iProcessing;
             switch (command.winControl.id) {
               case "opPlayPause":
                 iProcessing.playpause();
+                refreshAppBar();
                 break;
               case "opReset":
                 iProcessing.reset();

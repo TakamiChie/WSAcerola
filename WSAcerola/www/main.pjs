@@ -37,6 +37,10 @@ void playpause() {
   }
 }
 
+int getState() {
+  return state;
+}
+
 void reset() {
   switch(state){
     case STATE_STOP:
@@ -99,6 +103,7 @@ void draw() {
   }
   if(per <= 0){
     state = STATE_STOP;
+    refreshAppBar();
   }
 
   if(state != STATE_STOP){
