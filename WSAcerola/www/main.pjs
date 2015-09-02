@@ -9,7 +9,7 @@ int state;
 PFont font;
 
 void setup() {
-  size(300, 300);
+  size(1024, 1024);
   font = loadFont("sans-serif");
   state = STATE_STOP;
   background(255);
