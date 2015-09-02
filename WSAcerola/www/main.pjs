@@ -100,12 +100,24 @@ void draw() {
       break;
     case STATE_PLAY:
       time = (millis() - starttime) / 1000;
-      drawText = makeText(time);
+      drawText = "";
       break;
     case STATE_PAUSE:
       time = pausetime / 1000;
-      drawText = makeText(time);
+      drawText = "";
       break;
+  }
+  if (drawText == "") {
+    // 時刻表現文字列作成
+    if(time < timertime){
+      if(iscountdown){
+        drawText = makeText(timertime - time);
+      }else{
+        drawText = makeText(time);
+      }
+    }else{
+      drawText = makeText(time - timertime);
+    }
   }
   float per;
   if(time < timertime){
