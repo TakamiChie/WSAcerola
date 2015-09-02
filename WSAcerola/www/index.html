@@ -20,6 +20,25 @@
     <canvas id="timer" data-processing-sources="main.pjs"></canvas>
   </div>
 
+  <div id="settingFlyout" data-win-control="WinJS.UI.Flyout" aria-label="{Confirm purchase flyout}">
+    <label class="win-label">
+      タイマー時間
+      <select id="inNormalTimer" class="win-textbox"></select>
+    </label>
+    <label class="win-label">
+      タイマー時間(超過時間)
+      <select id="inExceedTimer" class="win-textbox"></select>
+    </label>
+    <label class="win-label">
+      タイマー完了時の音
+      <select id="inFinishedSound" class="win-textbox"></select>
+    </label>
+    <label class="win-label">
+      <input type="checkbox" class="win-checkbox" id="inCountdown" />
+      カウントダウン
+    </label>
+  </div>
+
   <div id="toolbar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom'}">
     <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
             id: 'opPlayPause',
@@ -35,7 +54,8 @@
             id: 'opSetting',
             label: 'Setting',
             icon: 'settings',
-            onclick: Main.operation}"></button>
+            type: 'flyout',
+            flyout: select('#settingFlyout')}"></button>
   </div>
 
   <!-- WinJS -->

@@ -17,6 +17,10 @@ function refreshAppBar() {
     "use strict";
 
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
+  
+    function makeTime(time) {
+      return Math.floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + Math.floor(time % 60);
+    }
 
     function onDeviceReady() {
       document.addEventListener('pause', onPause.bind(this), false);
@@ -25,6 +29,26 @@ function refreshAppBar() {
       WinJS.UI.Pages.define('index.html', {
         ready: function () {
           iProcessing = Processing.getInstanceById("timer");
+          var inNormalTimerValues = [10, 30, 60, 180, 300];
+          var inExceedTimerValues = [10, 30, 60];
+          var inFinishedSound = ["Silent"];
+          var setValues = function (box, values) {
+            for (var i = 0; i < values.length; i++) {
+              var n = values[i];
+              var o = document.createElement("option");
+              if (typeof (n) == "number") {
+                o.value = n;
+                o.text = makeTime(n);
+              } else {
+                o.value = n;
+                o.text = n;
+              }
+              box.appendChild(o);
+            }
+          }
+          setValues(document.getElementById("inNormalTimer"), inNormalTimerValues);
+          setValues(document.getElementById("inExceedTimer"), inExceedTimerValues);
+          setValues(document.getElementById("inFinishedSound"), inFinishedSound);
         }
       });
 

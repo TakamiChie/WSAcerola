@@ -25,3 +25,16 @@
   left: 0px;
   max-height: calc(100vh - 64px);
 }
+
+#settingFlyout{
+  visibility: hidden;
+}
+
+label{
+  display: block;
+}
+
+label > select{
+  display: block;
+  margin-left: 20px;
+}
