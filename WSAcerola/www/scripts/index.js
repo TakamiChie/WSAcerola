@@ -21,6 +21,53 @@ function refreshAppBar() {
     function makeTime(time) {
       return Math.floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + Math.floor(time % 60);
     }
+  
+    // 設定の読み込み
+    function refreshSetting(load) {
+      var settingNames = [
+          ["NormalTimer", 60],
+          ["ExceedTimer", 60],
+          ["FinishedSound", "Silent"],
+          ["Countdown", "off"]
+        ];
+      for (var i = 0; i < settingNames.length; i++) {
+        var s = settingNames[i][0];
+        var value = localStorage.getItem(s);
+        if (value == undefined) {
+          value = settingNames[i][1];
+        }
+        if (load) {
+          switch (s) {
+            case "NormalTimer":
+            case "ExceedTimer":
+            case "FinishedSound":
+              document.getElementById("in" + s).value = value;
+              break;
+            case "Countdown":
+              document.getElementById("in" + s).checked = value == "on";
+              break;
+          }
+        }
+        switch (s) {
+          case "NormalTimer":
+            iProcessing.setTimerTime(value);
+            break;
+          case "ExceedTimer":
+            iProcessing.setExceedTime(value);
+            break;
+          case "FinishedSound":
+            break;
+          case "Countdown":
+            iProcessing.setCountdown(value == "on");
+            break;
+        }
+      }
+    }
+
+    function settingChanged(e) {
+      localStorage.setItem(e.target.id.substring(2), e.target.value);
+      refreshSetting(false);
+    }
 
     function onDeviceReady() {
       document.addEventListener('pause', onPause.bind(this), false);
@@ -33,6 +80,7 @@ function refreshAppBar() {
           var inExceedTimerValues = [10, 30, 60];
           var inFinishedSound = ["Silent"];
           var setValues = function (box, values) {
+            box.onchange = settingChanged;
             for (var i = 0; i < values.length; i++) {
               var n = values[i];
               var o = document.createElement("option");
@@ -49,6 +97,8 @@ function refreshAppBar() {
           setValues(document.getElementById("inNormalTimer"), inNormalTimerValues);
           setValues(document.getElementById("inExceedTimer"), inExceedTimerValues);
           setValues(document.getElementById("inFinishedSound"), inFinishedSound);
+          document.getElementById("inCountdown").onchange = settingChanged;
+          refreshSetting(true);
         }
       });
 

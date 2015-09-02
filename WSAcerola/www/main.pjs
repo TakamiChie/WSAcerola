@@ -1,10 +1,12 @@
 ﻿int STATE_STOP = 0;
 int STATE_PLAY = 1;
 int STATE_PAUSE = 2;
-float TIME = 60;
 int START_ANGLE = 270;
 int starttime;
 int pausetime;
+int timertime;
+int exceedtime;
+bool iscountdown;
 int state;
 PFont font;
 
@@ -12,6 +14,7 @@ void setup() {
   size(1024, 1024);
   font = loadFont("sans-serif");
   state = STATE_STOP;
+  timertime = 60;
   background(255);
   frameRate(20);
   noFill();
@@ -39,6 +42,19 @@ void playpause() {
 
 int getState() {
   return state;
+}
+
+void setTimerTime(int value) {
+  timertime = value;
+  reset();
+}
+
+void setExceedTime(int value){
+  exceedtime = value;
+}
+
+void setCountdown(bool value){
+  iscountdown = value;
 }
 
 void reset() {
@@ -92,14 +108,14 @@ void draw() {
       break;
   }
   float per;
-  if(time < TIME){
+  if(time < timertime){
     // 1周目
     fg = #7799dd;
-    per = 1 - time / TIME;
-  }else if(time < TIME * 2){
+    per = 1 - time / timertime;
+  }else if(time < timertime * 2){
     // 2周目
     fg = #dd9977;
-    per = 2 - time / TIME;
+    per = 2 - time / timertime;
   }
   if(per <= 0){
     state = STATE_STOP;
