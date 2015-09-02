@@ -1,15 +1,37 @@
 ﻿float TIME = 60;
 int START_ANGLE = 270;
 int starttime;
+int pausetime;
+bool state = false;
 PFont font;
 
 void setup() {
   size(300, 300);
   font = loadFont("sans-serif");
+  state = false;
   background(255);
   frameRate(20);
   noFill();
-  starttime = millis();
+}
+
+void playpause() {
+  if(!state){
+    // play
+    if(starttime == 0){
+      starttime = millis();
+    } else {
+      starttime = millis() - pausetime;
+    }
+  } else {
+    // pause
+    pausetime = millis() - starttime;
+  }
+  state = !state;
+}
+
+void reset() {
+  state = false;
+  starttime = 0;
 }
 
 void draw() {
@@ -26,33 +48,35 @@ void draw() {
   strokeWeight(wp);
   stroke(#02133a);
   ellipse(wh, hh, wc, hc);
-  // 前景
-  float time = (millis() - starttime) / 1000;
-  float per;
-  if(time < TIME){
-    // 1周目
-    fg = #7799dd;
-    per = 1 - time / TIME;
-  }else if(time < TIME * 2){
-    // 2周目
-    fg = #dd9977;
-    per = 2 - time / TIME;
-  }else{
-    // おわり
-    fg = #ff0000;
-    per = 0;
+  if(state){
+    // 前景
+    float time = (millis() - starttime) / 1000;
+    float per;
+    if(time < TIME){
+      // 1周目
+      fg = #7799dd;
+      per = 1 - time / TIME;
+    }else if(time < TIME * 2){
+      // 2周目
+      fg = #dd9977;
+      per = 2 - time / TIME;
+    }else{
+      // おわり
+      fg = #ff0000;
+      per = 0;
+    }
+    if(per > 0){
+      stroke(fg);
+      arc(wh, hh, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
+    }
+    // テキスト
+    fill(fg);
+    textAlign(CENTER, CENTER);
+    textFont(font, width / 3);
+    String drawText =
+      per > 0 ?
+        floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + floor(time % 60) :
+        "0:00";
+    text(drawText, wh, hh);
   }
-  if(per > 0){
-    stroke(fg);
-    arc(wh, hh, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
-  }
-  // テキスト
-  fill(fg);
-  textAlign(CENTER, CENTER);
-  textFont(font, width / 3);
-  String drawText =
-    per > 0 ?
-      floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + floor(time % 60) :
-      "0:00";
-  text(drawText, wh, hh);
 }
