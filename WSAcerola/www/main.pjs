@@ -1,37 +1,60 @@
-﻿float TIME = 60;
+﻿int STATE_STOP = 0;
+int STATE_PLAY = 1;
+int STATE_PAUSE = 2;
+float TIME = 60;
 int START_ANGLE = 270;
 int starttime;
 int pausetime;
-bool state = false;
+int state;
 PFont font;
 
 void setup() {
   size(300, 300);
   font = loadFont("sans-serif");
-  state = false;
+  state = STATE_STOP;
   background(255);
   frameRate(20);
   noFill();
 }
 
 void playpause() {
-  if(!state){
-    // play
-    if(starttime == 0){
+  switch(state){
+    case STATE_STOP:
+      // stop -> play
+      state = STATE_PLAY;
       starttime = millis();
-    } else {
+      break;
+    case STATE_PLAY:
+      // play -> pause
+      state = STATE_PAUSE;
+      pausetime = millis() - starttime;
+      break;
+    case STATE_PAUSE:
+      // pause -> play
+      state = STATE_PLAY;
       starttime = millis() - pausetime;
-    }
-  } else {
-    // pause
-    pausetime = millis() - starttime;
+      break;
   }
-  state = !state;
 }
 
 void reset() {
-  state = false;
-  starttime = 0;
+  switch(state){
+    case STATE_STOP:
+      // noop
+      break;
+    case STATE_PLAY:
+      // play継続
+      starttime = millis();
+      break;
+    case STATE_PAUSE:
+      // ポーズ時間をリセット
+      pausetime = 0;
+      break;
+  }
+}
+
+String makeText(int time) {
+  return floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + floor(time % 60);
 }
 
 void draw() {
@@ -48,35 +71,48 @@ void draw() {
   strokeWeight(wp);
   stroke(#02133a);
   ellipse(wh, hh, wc, hc);
-  if(state){
-    // 前景
-    float time = (millis() - starttime) / 1000;
-    float per;
-    if(time < TIME){
-      // 1周目
-      fg = #7799dd;
-      per = 1 - time / TIME;
-    }else if(time < TIME * 2){
-      // 2周目
-      fg = #dd9977;
-      per = 2 - time / TIME;
-    }else{
-      // おわり
-      fg = #ff0000;
-      per = 0;
-    }
-    if(per > 0){
-      stroke(fg);
-      arc(wh, hh, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
-    }
-    // テキスト
-    fill(fg);
-    textAlign(CENTER, CENTER);
-    textFont(font, width / 3);
-    String drawText =
-      per > 0 ?
-        floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + floor(time % 60) :
-        "0:00";
-    text(drawText, wh, hh);
+  // 値設定
+  float time;
+  switch(state){
+    case STATE_STOP:
+      time = 0;
+      drawText = "STOP";
+      break;
+    case STATE_PLAY:
+      time = (millis() - starttime) / 1000;
+      drawText = makeText(time);
+      break;
+    case STATE_PAUSE:
+      time = pausetime / 1000;
+      drawText = makeText(time);
+      break;
   }
+  float per;
+  if(time < TIME){
+    // 1周目
+    fg = #7799dd;
+    per = 1 - time / TIME;
+  }else if(time < TIME * 2){
+    // 2周目
+    fg = #dd9977;
+    per = 2 - time / TIME;
+  }else{
+    // おわり
+    fg = #ff0000;
+    per = 0;
+  }
+  if(per <= 0){
+    state = STATE_STOP;
+  }
+
+  if(state != STATE_STOP){
+    // 前景描画
+    stroke(fg);
+    arc(wh, hh, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
+  }
+  // テキスト
+  fill(fg);
+  textAlign(CENTER, CENTER);
+  textFont(font, width / 3);
+  text(drawText, wh, hh);
 }
