@@ -7,6 +7,8 @@
 
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
 
+    var iProcessing;
+
     function onDeviceReady() {
       document.addEventListener('pause', onPause.bind(this), false);
       document.addEventListener('resume', onResume.bind(this), false);
@@ -16,12 +18,18 @@
 
       WinJS.Namespace.define('Main', {
         operation: WinJS.UI.eventHandler(function (e) {
+          if (!iProcessing) {
+            iProcessing = Processing.getInstanceById("timer");
+          }
+
           var command = e.currentTarget;
           if (command.winControl) {
             switch (command.winControl.id) {
               case "opPlayPause":
+                iProcessing.playpause();
                 break;
               case "opReset":
+                iProcessing.reset();
                 break;
               case "opSettings":
 
