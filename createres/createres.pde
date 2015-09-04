@@ -62,29 +62,46 @@ void setup(){
   saveThis(768, 1280, "screens\\wp8\\SplashScreenImage.jpg");
 }
 
-void saveThis(int w, int h, String name) {
+void saveThis(int w, int h, int[] adjust, color bkcolor,  String name) {
   PGraphics pg = createGraphics(w, h, JAVA2D);
   
   float wh = pg.width / 2;
   float hh = pg.height / 2;
+  int ax = adjust[0];
+  int ay = adjust[1];
   int wp = min(pg.width / 10, 20);
-  int minsize = min(pg.width, pg.height);
-  int wc = minsize / 3 * 2 - wp;
-  int hc = minsize / 3 * 2 - wp;
+  int minsize = min(pg.width, pg.height) / 3 * 2 - max(ax, ay);
+  int wc = minsize - wp;
+  int hc = minsize - wp;
   color fg = #7799dd;
   pg.beginDraw();
-  pg.background(255, 1);
+  pg.background(bkcolor);
   pg.smooth();
   pg.noFill();
   // 背景
   pg.strokeWeight(wp);
   pg.stroke(#02133a);
-  pg.ellipse(wh, hh, wc, hc);
+  pg.ellipse(wh - ax, hh - ay, wc, hc);
   
   // 前景
   pg.stroke(fg);
-  pg.arc(wh, hh, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * 0.65));
+  pg.arc(wh - ax, hh - ay, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * 0.65));
   pg.endDraw();
   pg.save("..\\WSAcerola\\res\\" + name);
   println(name + " Save Finished");
+}
+
+void saveThis(int w, int h, int[] adjust, String name) {
+  int[] xy = {0, 0};
+  saveThis(w, h, xy, color(255, 0), name);
+}
+
+void saveThis(int w, int h, color bkcolor, String name) {
+  int[] xy = {0, 0};
+  saveThis(w, h, xy, bkcolor, name);
+}
+
+void saveThis(int w, int h, String name) {
+  int[] xy = {0, 0};
+  saveThis(w, h, xy, name);
 }
