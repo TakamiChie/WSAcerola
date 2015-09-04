@@ -2,6 +2,8 @@ int START_ANGLE = 270;
 
 void setup(){
   size(100, 100);
+  int[] adjustwinlogo = {0, 16};
+  color noTlansparent = #FFFFFF;
   // Android
   saveThis(36, 36, "icons\\android\\icon-36-ldpi.png");
   saveThis(48, 48, "icons\\android\\icon-48-mdpi.png");
@@ -42,22 +44,34 @@ void setup(){
   saveThis(1242, 2208, "screens\\ios\\screen-iphone-portrait-736h.png");
   saveThis(320, 480, "screens\\ios\\screen-iphone-portrait.png");
   // Windows
-  saveThis(150, 150, "icons\\windows\\Square150x150Logo.scale-100.png");
-  saveThis(360, 360, "icons\\windows\\Square150x150Logo.scale-240.png");
+  saveThis(150, 150, adjustwinlogo, 
+    "icons\\windows\\Square150x150Logo.scale-100.png");
+  saveThis(360, 360, adjustwinlogo, 
+  	"icons\\windows\\Square150x150Logo.scale-240.png");
   saveThis(30, 30, "icons\\windows\\Square30x30Logo.scale-100.png");
-  saveThis(310, 310, "icons\\windows\\Square310x310Logo.scale-100.png");
-  saveThis(106, 106, "icons\\windows\\Square44x44Logo.scale-240.png");
-  saveThis(70, 70, "icons\\windows\\Square70x70Logo.scale-100.png");
-  saveThis(170, 170, "icons\\windows\\Square71x71Logo.scale-240.png");
-  saveThis(50, 50, "icons\\windows\\StoreLogo.scale-100.png");
-  saveThis(120, 120, "icons\\windows\\StoreLogo.scale-240.png");
-  saveThis(310, 150, "icons\\windows\\Wide310x150Logo.scale-100.png");
-  saveThis(744, 360, "icons\\windows\\Wide310x150Logo.scale-240.png");
-  saveThis(620, 300, "screens\\windows\\SplashScreen.scale-100.png");
+  saveThis(310, 310, adjustwinlogo, 
+  	"icons\\windows\\Square310x310Logo.scale-100.png");
+  saveThis(106, 106, adjustwinlogo, 
+  	"icons\\windows\\Square44x44Logo.scale-240.png");
+  saveThis(70, 70, adjustwinlogo, 
+  	"icons\\windows\\Square70x70Logo.scale-100.png");
+  saveThis(170, 170, adjustwinlogo, 
+  	"icons\\windows\\Square71x71Logo.scale-240.png");
+  saveThis(50, 50, adjustwinlogo, 
+  	"icons\\windows\\StoreLogo.scale-100.png");
+  saveThis(120, 120, adjustwinlogo, 
+  	"icons\\windows\\StoreLogo.scale-240.png");
+  saveThis(310, 150, adjustwinlogo, 
+  	"icons\\windows\\Wide310x150Logo.scale-100.png");
+  saveThis(744, 360, adjustwinlogo, 
+  	"icons\\windows\\Wide310x150Logo.scale-240.png");
+  saveThis(620, 300, noTlansparent,
+    "screens\\windows\\SplashScreen.scale-100.png");
   saveThis(1152, 1920, "screens\\windows\\SplashScreen.scale-240.png");
   saveThis(1152, 1920, "screens\\windows\\SplashScreenPhone.scale-240.png");
   // WP8
-  saveThis(99, 99, "icons\\wp8\\ApplicationIcon.png");
+  saveThis(99, 99, adjustwinlogo,
+  	"icons\\wp8\\ApplicationIcon.png");
   saveThis(159, 159, "icons\\wp8\\Background.png");
   saveThis(768, 1280, "screens\\wp8\\SplashScreenImage.jpg");
 }
