@@ -5,6 +5,8 @@
   width: 90%;
   margin: auto;
   position: relative;
+  max-width: calc(100vh - 104px);
+  max-height: calc(100vh - 104px);
 }
 
 #container::before{
@@ -23,7 +25,6 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  max-height: calc(100vh - 104px);
 }
 
 #settingFlyout{
