@@ -75,6 +75,11 @@ function refreshAppBar() {
 
       WinJS.UI.Pages.define('index.html', {
         ready: function () {
+          var timer = document.getElementById("timer");
+          timer.addEventListener("click", function (e) {
+            iProcessing.playpause();
+            refreshAppBar();
+          });
           iProcessing = Processing.getInstanceById("timer");
           var inNormalTimerValues = [10, 30, 60, 180, 300];
           var inExceedTimerValues = [10, 30, 60];
