@@ -140,18 +140,8 @@ function refreshAppBar() {
           var i = s.lastIndexOf('/');
           var path = s.substring(0, i + 1) + "audio/";
 
-          var onsuccess = function () {
-            console.log("media loaded");
-          }
-
-          var onfailed = function (e) {
-            console.log("media load failed");
-            console.log("code:" + e.code);
-            console.log("message:" + e.message);
-          }
-
-          chime = new Media(path + "chime.mp3", onsuccess, onfailed);
-          signal = new Media(path + "signal.mp3", onsuccess, onfailed);
+          chime = new Media(path + "chime.mp3", mediaonSuccess, mediaonFailed);
+          signal = new Media(path + "signal.mp3", mediaonSuccess, mediaonFailed);
         }
       });
 
@@ -182,5 +172,15 @@ function refreshAppBar() {
     };
 
     function onResume() {
+    };
+
+    function mediaonSuccess() {
+      console.log("media loaded");
+    };
+
+    function mediaonFailed() {
+      console.log("media load failed");
+      console.log("code:" + e.code);
+      console.log("message:" + e.message);
     };
 } )();
