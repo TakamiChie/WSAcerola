@@ -18,6 +18,9 @@ function refreshAppBar() {
 
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
   
+    var chime;
+    var signal;
+
     function makeTime(time) {
       return Math.floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + Math.floor(time % 60);
     }
@@ -86,7 +89,7 @@ function refreshAppBar() {
           // 設定の読み込み
           var inNormalTimerValues = [10, 30, 60, 180, 300];
           var inExceedTimerValues = [10, 30, 60];
-          var inFinishedSound = ["Silent"];
+          var inFinishedSound = ["Silent", "Chime", "Signal"];
           var setValues = function (box, values) {
             box.onchange = settingChanged;
             for (var i = 0; i < values.length; i++) {
@@ -107,6 +110,24 @@ function refreshAppBar() {
           setValues(document.getElementById("inFinishedSound"), inFinishedSound);
           document.getElementById("inCountdown").onchange = settingChanged;
           refreshSetting(true);
+
+          // 音声読み込み
+          var s = location.pathname;
+          var i = s.lastIndexOf('/');
+          var path = s.substring(0, i + 1) + "audio/";
+
+          var onsuccess = function () {
+            console.log("media loaded");
+          }
+
+          var onfailed = function (e) {
+            console.log("media load failed");
+            console.log("code:" + e.code);
+            console.log("message:" + e.message);
+          }
+
+          chime = new Media(path + "chime.mp3", onsuccess, onfailed);
+          signal = new Media(path + "signal.mp3", onsuccess, onfailed);
         }
       });
 
