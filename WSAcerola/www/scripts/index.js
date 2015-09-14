@@ -5,6 +5,10 @@
 
 var iProcessing;
 
+var chime;
+
+var signal;
+
 function jsframe(time, limittime, exceedtime, percent) {
 }
 
@@ -20,9 +24,6 @@ function refreshAppBar() {
     "use strict";
 
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
-  
-    var chime;
-    var signal;
 
     function makeTime(time) {
       return Math.floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + Math.floor(time % 60);
