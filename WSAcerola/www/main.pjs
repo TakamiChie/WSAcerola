@@ -74,8 +74,14 @@ void reset() {
   }
 }
 
-String makeText(int time) {
-  return floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + floor(time % 60);
+String makeText(int time, bool countdown) {
+  string s = floor(time / 60) + ":";
+  if(countdown){
+    s = s + (time % 60 <= 9 ? "0" : "") + ceil(time % 60)
+  }else{
+    s = s + (time % 60 < 10 ? "0" : "") + floor(time % 60)
+  }
+  return s;
 }
 
 void draw() {
@@ -112,12 +118,12 @@ void draw() {
     // 時刻表現文字列作成
     if(time < timertime){
       if(iscountdown){
-        drawText = makeText(timertime - time);
+        drawText = makeText(timertime - time, true);
       }else{
-        drawText = makeText(time);
+        drawText = makeText(time, false);
       }
     }else{
-      drawText = makeText(time - timertime);
+      drawText = makeText(time - timertime, false);
     }
   }
   float per;
