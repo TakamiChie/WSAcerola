@@ -138,6 +138,7 @@ void draw() {
     // 前景描画
     stroke(fg);
     arc(wh, hh, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
+    jsframe(time, timertime, exceedtime,  per);
   }
   // テキスト
   fill(fg);

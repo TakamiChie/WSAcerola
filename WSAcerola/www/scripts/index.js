@@ -5,6 +5,9 @@
 
 var iProcessing;
 
+function jsframe(time, limittime, exceedtime, percent) {
+}
+
 // AppBarの表記（ツールバーアイコンなど）をリフレッシュする
 function refreshAppBar() {
   // ここに置かないとProcessing.js側から関数が見えないので注意
