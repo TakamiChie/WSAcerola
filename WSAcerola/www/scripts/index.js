@@ -75,12 +75,15 @@ function refreshAppBar() {
 
       WinJS.UI.Pages.define('index.html', {
         ready: function () {
+          // タイマー画像インスタンスの読み込み
           var timer = document.getElementById("timer");
           timer.addEventListener("click", function (e) {
             iProcessing.playpause();
             refreshAppBar();
           });
           iProcessing = Processing.getInstanceById("timer");
+
+          // 設定の読み込み
           var inNormalTimerValues = [10, 30, 60, 180, 300];
           var inExceedTimerValues = [10, 30, 60];
           var inFinishedSound = ["Silent"];
