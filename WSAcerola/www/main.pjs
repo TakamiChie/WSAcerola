@@ -26,6 +26,7 @@ void playpause() {
       // stop -> play
       state = STATE_PLAY;
       starttime = millis();
+      jsframe(0, timertime, exceedtime, 0);
       break;
     case STATE_PLAY:
       // play -> pause
@@ -138,6 +139,7 @@ void draw() {
     // 前景描画
     stroke(fg);
     arc(wh, hh, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * per));
+    jsframe(time, timertime, exceedtime,  per);
   }
   // テキスト
   fill(fg);

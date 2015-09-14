@@ -104,14 +104,15 @@
   <platform name="wp8">
     <splash src="res/screens/wp8/SplashScreenImage.jpg" width="480" height="800" />
   </platform>
-  <preference name="Fullscreen" value="True" />
+  <preference name="Fullscreen" value="False" />
   <vs:platformSpecificValues>
     <vs:platformSpecificWidget platformName="windows" id="WSAcerola" version="1.0.0.0">
       <vs:name>サークルタイマー</vs:name>
     </vs:platformSpecificWidget>
   </vs:platformSpecificValues>
-  <preference name="KeepRunning" value="False" />
-  <preference name="ShowTitle" value="True" />
-  <preference name="InAppBrowserStorageEnabled" value="False" />
-  <preference name="SuppressesIncrementalRendering" value="True" />
+  <preference name="KeepRunning" value="True" />
+  <preference name="ShowTitle" value="False" />
+  <preference name="InAppBrowserStorageEnabled" value="True" />
+  <preference name="SuppressesIncrementalRendering" value="False" />
+  <vs:plugin name="cordova-plugin-media" version="1.0.1" />
 </widget>

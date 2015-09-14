@@ -5,6 +5,29 @@
 
 var iProcessing;
 
+var alermed;
+
+var chime;
+
+var signal;
+
+// タイマー実行中1フレームごとに呼び出されるメソッド
+function jsframe(time, limittime, exceedtime, percent) {
+  var finishedSound = localStorage.getItem("FinishedSound");
+  if (time == 0) {
+    alermed = false;
+  }
+  if (!alermed) {
+    if (finishedSound == "Signal" && time > limittime - 3) {
+      signal.play();
+      alermed = true;
+    } else if (finishedSound == "Chime" && time > limittime) {
+      chime.play();
+      alermed = true;
+    }
+  }
+}
+
 // AppBarの表記（ツールバーアイコンなど）をリフレッシュする
 function refreshAppBar() {
   // ここに置かないとProcessing.js側から関数が見えないので注意
@@ -17,7 +40,7 @@ function refreshAppBar() {
     "use strict";
 
     document.addEventListener( 'deviceready', onDeviceReady.bind( this ), false );
-  
+
     function makeTime(time) {
       return Math.floor(time / 60) + ":" + (time % 60 < 10 ? "0" : "") + Math.floor(time % 60);
     }
@@ -86,7 +109,7 @@ function refreshAppBar() {
           // 設定の読み込み
           var inNormalTimerValues = [10, 30, 60, 180, 300];
           var inExceedTimerValues = [10, 30, 60];
-          var inFinishedSound = ["Silent"];
+          var inFinishedSound = ["Silent", "Chime", "Signal"];
           var setValues = function (box, values) {
             box.onchange = settingChanged;
             for (var i = 0; i < values.length; i++) {
@@ -107,6 +130,24 @@ function refreshAppBar() {
           setValues(document.getElementById("inFinishedSound"), inFinishedSound);
           document.getElementById("inCountdown").onchange = settingChanged;
           refreshSetting(true);
+
+          // 音声読み込み
+          var s = location.pathname;
+          var i = s.lastIndexOf('/');
+          var path = s.substring(0, i + 1) + "audio/";
+
+          var onsuccess = function () {
+            console.log("media loaded");
+          }
+
+          var onfailed = function (e) {
+            console.log("media load failed");
+            console.log("code:" + e.code);
+            console.log("message:" + e.message);
+          }
+
+          chime = new Media(path + "chime.mp3", onsuccess, onfailed);
+          signal = new Media(path + "signal.mp3", onsuccess, onfailed);
         }
       });
 
