@@ -59,6 +59,7 @@ void setCountdown(bool value){
 }
 
 void reset() {
+  jsframe(0, timertime, exceedtime, 0);
   switch(state){
     case STATE_STOP:
       // noop
