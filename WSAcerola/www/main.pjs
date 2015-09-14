@@ -26,6 +26,7 @@ void playpause() {
       // stop -> play
       state = STATE_PLAY;
       starttime = millis();
+      jsframe(0, timertime, exceedtime, 0);
       break;
     case STATE_PLAY:
       // play -> pause
