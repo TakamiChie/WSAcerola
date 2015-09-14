@@ -88,7 +88,11 @@ function refreshAppBar() {
     }
 
     function settingChanged(e) {
-      localStorage.setItem(e.target.id.substring(2), e.target.value);
+      if (e.target.type == "checkbox") {
+        localStorage.setItem(e.target.id.substring(2), e.target.checked ? "on" : "off");
+      } else {
+        localStorage.setItem(e.target.id.substring(2), e.target.value);
+      }
       refreshSetting(false);
     }
 
