@@ -5,11 +5,27 @@
 
 var iProcessing;
 
+var alermed;
+
 var chime;
 
 var signal;
 
+// タイマー実行中1フレームごとに呼び出されるメソッド
 function jsframe(time, limittime, exceedtime, percent) {
+  var finishedSound = localStorage.getItem("FinishedSound");
+  if (time == 0) {
+    alermed = false;
+  }
+  if (!alermed) {
+    if (finishedSound == "Signal" && time > limittime - 3) {
+      signal.play();
+      alermed = true;
+    } else if (finishedSound == "Chime" && time > limittime) {
+      chime.play();
+      alermed = true;
+    }
+  }
 }
 
 // AppBarの表記（ツールバーアイコンなど）をリフレッシュする
