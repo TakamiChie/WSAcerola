@@ -21,22 +21,22 @@
   </div>
 
   <div id="settingFlyout" data-win-control="WinJS.UI.Flyout" aria-label="{Confirm purchase flyout}">
-    <label class="win-label">
-      Timer Time
+    <div>
+      <label class="win-label" id="inNormalTimerLabel" for="inNormalTimer">Timer Time</label>
       <select id="inNormalTimer" class="win-textbox"></select>
-    </label>
-    <label class="win-label">
-      Timer Time(Exceed)
+    </div>
+    <div>
+      <label class="win-label" id="inExceedTimerLabel" for="inExceedTimer">Timer Time(Exceed)</label>
       <select id="inExceedTimer" class="win-textbox"></select>
-    </label>
-    <label class="win-label">
-      Sound
+    </div>
+    <div>
+      <label class="win-label" id="inFinishedSoundLabel" for="inFinishedSound">Sound</label>
       <select id="inFinishedSound" class="win-textbox"></select>
-    </label>
-    <label class="win-label">
+    </div>
+    <div>
       <input type="checkbox" class="win-checkbox" id="inCountdown" />
-      Countdown
-    </label>
+      <label class="win-label" id="inCountdownLabel" for="inCountdown">Countdown</label>
+    </div>
   </div>
 
   <div id="toolbar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom'}">
