@@ -53,11 +53,11 @@ void setup(){
   	"icons\\windows\\Square310x310Logo.scale-100.png");
   saveThis(106, 106, adjustwinlogo, 
   	"icons\\windows\\Square44x44Logo.scale-240.png");
-  saveThis(70, 70, adjustwinlogo, 
+  saveThis(70, 70,  
   	"icons\\windows\\Square70x70Logo.scale-100.png");
   saveThis(170, 170, adjustwinlogo, 
   	"icons\\windows\\Square71x71Logo.scale-240.png");
-  saveThis(50, 50, adjustwinlogo, 
+  saveThis(50, 50,  
   	"icons\\windows\\StoreLogo.scale-100.png");
   saveThis(120, 120, adjustwinlogo, 
   	"icons\\windows\\StoreLogo.scale-240.png");
