@@ -40,17 +40,18 @@
   </div>
 
   <div id="toolbar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom'}">
-    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+    <button data-win-control="WinJS.UI.AppBarCommand" id="opPlayPause" 
+            data-fortrue="Play" data-forfalse="Pause" data-win-options="{
             id: 'opPlayPause',
             label: 'Play',
             icon: 'play',
             onclick: Main.operation}"></button>
-    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+    <button data-win-control="WinJS.UI.AppBarCommand" id="opReset" data-win-options="{
             id: 'opReset',
             label: 'Reset',
             icon: 'refresh',
             onclick: Main.operation}"></button>
-    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+    <button data-win-control="WinJS.UI.AppBarCommand" id="opSetting" data-win-options="{
             id: 'opSetting',
             label: 'Setting',
             icon: 'settings',

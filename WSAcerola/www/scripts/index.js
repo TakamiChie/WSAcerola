@@ -33,7 +33,7 @@ function refreshAppBar() {
   // ここに置かないとProcessing.js側から関数が見えないので注意
   var state = iProcessing.getState();
   opPlayPause.winControl.icon = state == 1 ? "pause" : "play";
-  opPlayPause.winControl.label = state == 1 ? "Pause" : "Play";
+  opPlayPause.winControl.label = state == 1 ? opPlayPause.dataset.forfalse : opPlayPause.dataset.fortrue;
 }
 
 (function () {
@@ -142,6 +142,38 @@ function refreshAppBar() {
 
           chime = new Media(path + "chime.mp3", mediaonSuccess, mediaonFailed);
           signal = new Media(path + "signal.mp3", mediaonSuccess, mediaonFailed);
+
+          // ローカライズ対応
+          var localize = new Array();
+          localize["ja-JP"] = {
+            "inNormalTimerLabel": "タイマー時間",
+            "inExceedTimerLabel": "タイマー時間(超過時間)",
+            "inFinishedSoundLabel": "タイマー終了時のサウンド",
+            "inCountdownLabel": "カウントダウン",
+            "opPlayPause": ["開始", "ポーズ"],
+            "opReset": "リセット",
+            "opSetting": "設定"
+          };
+          if (localize[navigator.language]) {
+            var lo = localize[navigator.language];
+            for (var n in lo) {
+              var elm = document.getElementById(n);
+              if (!elm) continue;
+              var text;
+              if (typeof lo[n] == "object") {
+                elm.dataset.fortrue = lo[n][0];
+                elm.dataset.forfalse = lo[n][1];
+                text = lo[n][0];
+              } else {
+                text = lo[n];
+              }
+              if (elm.winControl) {
+                elm.winControl.label = text;
+              } else {
+                elm.innerText = text;
+              }
+            }
+          }
         }
       });
 
