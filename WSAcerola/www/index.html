@@ -21,36 +21,37 @@
   </div>
 
   <div id="settingFlyout" data-win-control="WinJS.UI.Flyout" aria-label="{Confirm purchase flyout}">
-    <label class="win-label">
-      タイマー時間
+    <div>
+      <label class="win-label" id="inNormalTimerLabel" for="inNormalTimer">Timer Time</label>
       <select id="inNormalTimer" class="win-textbox"></select>
-    </label>
-    <label class="win-label">
-      タイマー時間(超過時間)
+    </div>
+    <div>
+      <label class="win-label" id="inExceedTimerLabel" for="inExceedTimer">Timer Time(Exceed)</label>
       <select id="inExceedTimer" class="win-textbox"></select>
-    </label>
-    <label class="win-label">
-      タイマー完了時の音
+    </div>
+    <div>
+      <label class="win-label" id="inFinishedSoundLabel" for="inFinishedSound">Sound</label>
       <select id="inFinishedSound" class="win-textbox"></select>
-    </label>
-    <label class="win-label">
+    </div>
+    <div>
       <input type="checkbox" class="win-checkbox" id="inCountdown" />
-      カウントダウン
-    </label>
+      <label class="win-label" id="inCountdownLabel" for="inCountdown">Countdown</label>
+    </div>
   </div>
 
   <div id="toolbar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom'}">
-    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+    <button data-win-control="WinJS.UI.AppBarCommand" id="opPlayPause" 
+            data-fortrue="Play" data-forfalse="Pause" data-win-options="{
             id: 'opPlayPause',
             label: 'Play',
             icon: 'play',
             onclick: Main.operation}"></button>
-    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+    <button data-win-control="WinJS.UI.AppBarCommand" id="opReset" data-win-options="{
             id: 'opReset',
             label: 'Reset',
             icon: 'refresh',
             onclick: Main.operation}"></button>
-    <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{
+    <button data-win-control="WinJS.UI.AppBarCommand" id="opSetting" data-win-options="{
             id: 'opSetting',
             label: 'Setting',
             icon: 'settings',

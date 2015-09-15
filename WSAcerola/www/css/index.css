@@ -32,10 +32,9 @@
 }
 
 label{
-  display: block;
 }
 
-label > select{
+select{
   display: block;
   margin-left: 20px;
 }
