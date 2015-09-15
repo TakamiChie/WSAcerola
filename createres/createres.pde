@@ -2,7 +2,7 @@ int START_ANGLE = 270;
 
 void setup(){
   size(100, 100);
-  int[] adjustwinlogo = {0, 16};
+  int[] adjustwinlogo = {0, 8};
   color noTlansparent = #FFFFFF;
   // Android
   saveThis(36, 36, "icons\\android\\icon-36-ldpi.png");
