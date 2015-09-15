@@ -106,8 +106,7 @@ void saveThis(int w, int h, int[] adjust, color bkcolor,  String name) {
 }
 
 void saveThis(int w, int h, int[] adjust, String name) {
-  int[] xy = {0, 0};
-  saveThis(w, h, xy, color(255, 0), name);
+  saveThis(w, h, adjust, color(255, 0), name);
 }
 
 void saveThis(int w, int h, color bkcolor, String name) {
