@@ -2,7 +2,7 @@
 <widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" id="io.cordova.takamichie.acerola" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" defaultlocale="en-US">
   <name>ArcTimer</name>
   <description>Windows8 of timer-style, Circle timer</description>
-  <author href="http://cordova.io" email="dev@cordova.apache.org">高見知英</author>
+  <author href="http://onpu-tamago.net/" email="chie@onpu-tamago.net">ms-resource:Author</author>
   <platform name="windows">
     <name>ms-resource:AppName</name>
     <description>ms-resource:Description</description>
