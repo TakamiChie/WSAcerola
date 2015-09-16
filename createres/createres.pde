@@ -2,7 +2,7 @@ int START_ANGLE = 270;
 
 void setup(){
   size(100, 100);
-  int[] adjustwinlogo = {0, 16};
+  int[] adjustwinlogo = {0, 8};
   color noTlansparent = #FFFFFF;
   // Android
   saveThis(36, 36, "icons\\android\\icon-36-ldpi.png");
@@ -53,11 +53,11 @@ void setup(){
   	"icons\\windows\\Square310x310Logo.scale-100.png");
   saveThis(106, 106, adjustwinlogo, 
   	"icons\\windows\\Square44x44Logo.scale-240.png");
-  saveThis(70, 70, adjustwinlogo, 
+  saveThis(70, 70,  
   	"icons\\windows\\Square70x70Logo.scale-100.png");
   saveThis(170, 170, adjustwinlogo, 
   	"icons\\windows\\Square71x71Logo.scale-240.png");
-  saveThis(50, 50, adjustwinlogo, 
+  saveThis(50, 50,  
   	"icons\\windows\\StoreLogo.scale-100.png");
   saveThis(120, 120, adjustwinlogo, 
   	"icons\\windows\\StoreLogo.scale-240.png");
@@ -106,8 +106,7 @@ void saveThis(int w, int h, int[] adjust, color bkcolor,  String name) {
 }
 
 void saveThis(int w, int h, int[] adjust, String name) {
-  int[] xy = {0, 0};
-  saveThis(w, h, xy, color(255, 0), name);
+  saveThis(w, h, adjust, color(255, 0), name);
 }
 
 void saveThis(int w, int h, color bkcolor, String name) {
