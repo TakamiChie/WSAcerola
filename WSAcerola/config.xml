@@ -3,6 +3,11 @@
   <name>ArcTimer</name>
   <description>Windows8 of timer-style, Circle timer</description>
   <author href="http://cordova.io" email="dev@cordova.apache.org">Takami Chie</author>
+  <platform name="windows">
+    <name>ms-resource:AppName</name>
+    <description>ms-resource:Description</description>
+    <author href="http://onpu-tamago.net/" email="chie@onpu-tamago.net">ms-resource:Author</author>
+  </platform>
   <content src="index.html" />
   <access origin="*" />
   <vs:features />
@@ -107,7 +112,7 @@
   <preference name="Fullscreen" value="False" />
   <vs:platformSpecificValues>
     <vs:platformSpecificWidget platformName="windows" id="WSAcerola" version="1.0.0.0">
-      <vs:name>ArcTimer</vs:name>
+      <vs:name>ms-resource:AppName</vs:name>
     </vs:platformSpecificWidget>
   </vs:platformSpecificValues>
   <preference name="KeepRunning" value="True" />

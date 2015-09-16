@@ -1,0 +1,7 @@
+﻿// Windows アプリケーションのローカライズの詳細については、次を参照してください: http://go.microsoft.com/fwlink/?LinkId=212836
+
+{
+    "AppName"     : "ArcTimer",
+    "Description" : "Windows8 of timer-style, Circle timer",
+    "Author"      : "Takami Chie"
+}
