@@ -1,0 +1,7 @@
+﻿// Windows アプリケーションのローカライズの詳細については、次を参照してください: http://go.microsoft.com/fwlink/?LinkId=212836
+
+{
+    "AppName"     : "サークルタイマー",
+    "Description" : "Windows8のタイマー風サークルタイマー",
+    "Author"      : "高見知英"
+}
