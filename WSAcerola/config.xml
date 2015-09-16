@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" id="io.cordova.takamichie.acerola" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" defaultlocale="ja-JP">
-  <name>サークルタイマー</name>
-  <description>Windows8のタイマー風サークルタイマー。</description>
+<widget xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps" id="io.cordova.takamichie.acerola" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" defaultlocale="en-US">
+  <name>ArcTimer</name>
+  <description>Windows8 of timer-style, Circle timer</description>
   <author href="http://cordova.io" email="dev@cordova.apache.org">高見知英</author>
+  <platform name="windows">
+    <name>ms-resource:AppName</name>
+    <description>ms-resource:Description</description>
+    <author href="http://onpu-tamago.net/" email="chie@onpu-tamago.net">ms-resource:Author</author>
+  </platform>
   <content src="index.html" />
   <access origin="*" />
   <vs:features />
@@ -108,7 +113,7 @@
   <preference name="Fullscreen" value="False" />
   <vs:platformSpecificValues>
     <vs:platformSpecificWidget platformName="windows" id="WSAcerola" version="1.0.0.0">
-      <vs:name>サークルタイマー</vs:name>
+      <vs:name>ms-resource:AppName</vs:name>
     </vs:platformSpecificWidget>
   </vs:platformSpecificValues>
   <preference name="KeepRunning" value="True" />
