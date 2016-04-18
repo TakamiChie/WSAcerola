@@ -111,7 +111,7 @@ function refreshAppBar() {
           iProcessing = Processing.getInstanceById("timer");
 
           // 設定の読み込み
-          var inNormalTimerValues = [10, 30, 60, 180, 300];
+          var inNormalTimerValues = [10, 30, 60, 180, 300, 600, 1800, 3600];
           var inExceedTimerValues = [10, 30, 60];
           var inFinishedSound = ["Silent", "Chime", "Signal"];
           var setValues = function (box, values) {
