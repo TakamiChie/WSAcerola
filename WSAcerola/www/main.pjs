@@ -132,6 +132,10 @@ void draw() {
     // 1周目
     fg = #7799dd;
     per = 1 - time / timertime;
+  }else if(exceedtime == -1){
+    // 2周目(時間を計るだけ)
+    fg = #dd9977;
+    per = 1;
   }else if(time < timertime + exceedtime){
     // 2周目
     fg = #dd9977;

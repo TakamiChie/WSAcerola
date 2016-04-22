@@ -112,7 +112,7 @@ function refreshAppBar() {
 
           // 設定の読み込み
           var inNormalTimerValues = [10, 30, 60, 180, 300, 600, 1800, 3600];
-          var inExceedTimerValues = [10, 30, 60];
+          var inExceedTimerValues = [-1, 10, 30, 60];
           var inFinishedSound = ["Silent", "Chime", "Signal"];
           var setValues = function (box, values) {
             box.onchange = settingChanged;
@@ -120,8 +120,13 @@ function refreshAppBar() {
               var n = values[i];
               var o = document.createElement("option");
               if (typeof (n) == "number") {
-                o.value = n;
-                o.text = makeTime(n);
+                if (n <= -1) {
+                  o.value = -1;
+                  o.text = "--:--";
+                } else {
+                  o.value = n;
+                  o.text = makeTime(n);
+                }
               } else {
                 o.value = n;
                 o.text = n;
