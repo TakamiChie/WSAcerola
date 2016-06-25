@@ -101,8 +101,12 @@ void saveThis(int w, int h, int[] adjust, color bkcolor,  String name) {
   pg.stroke(fg);
   pg.arc(wh - ax, hh - ay, wc, hc, radians(START_ANGLE), radians(START_ANGLE + 360 * 0.65));
   pg.endDraw();
-  pg.save("..\\WSAcerola\\res\\" + name);
-  println(name + " Save Finished");
+  try{
+  ((PImage)pg.clone()).save("..\\WSAcerola\\res\\" + name);
+    println(name + " Save Finished");
+  }catch(Exception e){
+    println(name + " Error!");
+  }
 }
 
 void saveThis(int w, int h, int[] adjust, String name) {
