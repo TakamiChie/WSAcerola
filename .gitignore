@@ -214,3 +214,4 @@ WSAcerola/res/icons/**/*.png
 WSAcerola/res/screens/**/*.png
 WSAcerola/res/screens/**/*.jpg
 WSAcerola/plugins/**/*.*
+WSAcerola/plugins/**/*
