@@ -120,5 +120,8 @@
   <preference name="ShowTitle" value="False" />
   <preference name="InAppBrowserStorageEnabled" value="True" />
   <preference name="SuppressesIncrementalRendering" value="False" />
-  <vs:plugin name="cordova-plugin-media" version="1.0.1" />
+  <plugin name="cordova-plugin-compat" version="1.0.0" />
+  <plugin name="cordova-plugin-file" version="4.2.0" />
+  <plugin name="cordova-plugin-media" version="1.0.1" />
+  <plugin name="cordova-plugin-vibration" version="2.1.1" />
 </widget>
